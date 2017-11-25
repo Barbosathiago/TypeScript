@@ -1,7 +1,7 @@
 "use strict";
 exports.__esModule = true;
 // Definição de uma classe
-var SpaceCraft = /** @class */ (function () {
+var SpaceCraft = (function () {
     function SpaceCraft(propulsor) {
         this.propulsor = propulsor;
     } // Declaração de atributos minimizada

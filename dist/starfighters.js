@@ -12,7 +12,7 @@ var __extends = (this && this.__extends) || (function () {
 exports.__esModule = true;
 var base_ships_1 = require("./base-ships");
 // Implementação de herança e interface
-var MilleniumFalcom = /** @class */ (function (_super) {
+var MilleniumFalcom = (function (_super) {
     __extends(MilleniumFalcom, _super);
     function MilleniumFalcom() {
         var _this = _super.call(this, 'HyperDrive') || this;
