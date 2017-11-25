@@ -1,35 +1,38 @@
-let message: string = "Help me, Obi-Wan Kenobi. You're my only hope!"
-console.log(message);
+// Definição de uma classe
+class SpaceCraft {
 
+  constructor(public propulsor: string){} // Declaração de atributos minimizada
 
-let episode: number = 4
-episode = 4
-console.log("This is episode " + 4)
-episode = episode + 1
-console.log("Next episode is " + episode)
-
-
-let favoriteDroid
-favoriteDroid = 'BB-8'
-favoriteDroid = 8
-console.log("My favorite droid is " + favoriteDroid)
-
-
-let isEnoughToBeatMF = function (parsecs: number) : boolean {
-  return parsecs < 12
-}
-// Usar aspas para utilizar a template string
-let distance = 11
-console.log(`Is ${distance} parsecs enough to beat Millenium Falcon? ${isEnoughToBeatMF(distance) ? 'YES': 'NO'}`)
-
-// Arrow function
-let call =  (name: string) => console.log(`Do you copy, ${name}`)
-call('R2')
-
-
-function inc(speed: number, inc: number = 1): number{
-  return speed + inc
+  jumpIntoHyperSpace(){
+    console.log(`Entering hyperspace with ${this.propulsor}`)
+  }
 }
 
-console.log(`inc (5,1) = ${inc(5,1)}`)
-console.log(`inc (5) = ${inc(5)}`)
+let ship = new SpaceCraft('HyperDrive')
+ship.jumpIntoHyperSpace()
+
+
+// Implementação de herança e interface
+class MilleniumFalcom extends SpaceCraft implements ContainerShip{
+
+ cargoContainers: number
+  constructor(){
+    super('HyperDrive')
+    this.cargoContainers = 4
+  }
+
+  jumpIntoHyperSpace(){
+    return Math.random() >= 0.5 ? super.jumpIntoHyperSpace() : console.log('Failed to jump into hyperspace :(')
+  }
+}
+
+let falcon = new MilleniumFalcom()
+falcon.jumpIntoHyperSpace()
+
+interface ContainerShip{
+    cargoContainers: number
+}
+
+let goodForTheJob = (ship: ContainerShip) => ship.cargoContainers > 2
+
+console.log(`Is falcon good for the job? ${goodForTheJob(falcon) ? 'Yes': 'No'}`)

@@ -1,26 +1,39 @@
-var message = "Help me, Obi-Wan Kenobi. You're my only hope!";
-console.log(message);
-var episode = 4;
-episode = 4;
-console.log("This is episode " + 4);
-episode = episode + 1;
-console.log("Next episode is " + episode);
-var favoriteDroid;
-favoriteDroid = 'BB-8';
-favoriteDroid = 8;
-console.log("My favorite droid is " + favoriteDroid);
-var isEnoughToBeatMF = function (parsecs) {
-    return parsecs < 12;
-};
-// Usar aspas para utilizar a template string
-var distance = 11;
-console.log("Is " + distance + " parsecs enough to beat Millenium Falcon? " + (isEnoughToBeatMF(distance) ? 'YES' : 'NO'));
-// Arrow function
-var call = function (name) { return console.log("Do you copy, " + name); };
-call('R2');
-function inc(speed, inc) {
-    if (inc === void 0) { inc = 1; }
-    return speed + inc;
-}
-console.log("inc (5,1) = " + inc(5, 1));
-console.log("inc (5) = " + inc(5));
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
+// Definição de uma classe
+var SpaceCraft = /** @class */ (function () {
+    function SpaceCraft(propulsor) {
+        this.propulsor = propulsor;
+    } // Declaração de atributos minimizada
+    SpaceCraft.prototype.jumpIntoHyperSpace = function () {
+        console.log("Entering hyperspace with " + this.propulsor);
+    };
+    return SpaceCraft;
+}());
+var ship = new SpaceCraft('HyperDrive');
+ship.jumpIntoHyperSpace();
+// Implementação de herança e interface
+var MilleniumFalcom = /** @class */ (function (_super) {
+    __extends(MilleniumFalcom, _super);
+    function MilleniumFalcom() {
+        var _this = _super.call(this, 'HyperDrive') || this;
+        _this.cargoContainers = 4;
+        return _this;
+    }
+    MilleniumFalcom.prototype.jumpIntoHyperSpace = function () {
+        return Math.random() >= 0.5 ? _super.prototype.jumpIntoHyperSpace.call(this) : console.log('Failed to jump into hyperspace :(');
+    };
+    return MilleniumFalcom;
+}(SpaceCraft));
+var falcon = new MilleniumFalcom();
+falcon.jumpIntoHyperSpace();
+var goodForTheJob = function (ship) { return ship.cargoContainers > 2; };
+console.log("Is falcon good for the job? " + (goodForTheJob(falcon) ? 'Yes' : 'No'));
